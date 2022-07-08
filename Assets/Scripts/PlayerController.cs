@@ -22,15 +22,12 @@ public class PlayerController : MonoBehaviour
 
     public bool died;
 
-    private CameraController cmr;
-
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = FindObjectOfType<GameManager>();
         collider2d = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
-        cmr = FindObjectOfType<CameraController>();
 
         jumpCounter = 0;
 
@@ -42,20 +39,6 @@ public class PlayerController : MonoBehaviour
         grounded = Physics2D.IsTouchingLayers(collider2d, groundLayer);
 
         rb.velocity = new Vector2(speed, rb.velocity.y);
-
-        // Change this part later for mobile capability.
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            // Checking if the Player is touching the ground.
-            if (grounded)
-            {
-                rb.velocity = new Vector2(rb.velocity.x + 1f, jumpPower);
-                jumpCounter = 0.5f;
-            } else
-            {
-                jumpCounter = 0f;
-            }
-        }
 
         if(Input.GetKeyDown(KeyCode.D))
         {
@@ -95,7 +78,6 @@ public class PlayerController : MonoBehaviour
         {
             gameManager.DeathMenuShow();
             died = true;
-            cmr.PlayerDied();
             gameObject.SetActive(false);
         }
     }

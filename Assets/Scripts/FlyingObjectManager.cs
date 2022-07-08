@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class FlyingObjectManager : MonoBehaviour
 {
-    public float speed = 6f;
-
     private Rigidbody2D rb;
 
     private GameManager gameManager;
@@ -34,7 +32,7 @@ public class FlyingObjectManager : MonoBehaviour
             if (timer < Time.time && player.died == false)
             {
                 timer = Time.time + 2f;
-                Instantiate(missle, transform.position, transform.rotation);
+                Instantiate(missle, transform.position, transform.rotation); // Thats the place where we launch missle!
             }
         }
         else
