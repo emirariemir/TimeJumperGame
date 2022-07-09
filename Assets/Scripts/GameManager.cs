@@ -61,7 +61,7 @@ public class GameManager : MonoBehaviour
 
     public float GetBoxHeight()
     {
-        boxHeight = Random.Range(-8f, -4f);
+        boxHeight = Random.Range(-6f, -2f);
         return boxHeight;
     }
 }
